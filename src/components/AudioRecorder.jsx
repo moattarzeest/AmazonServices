@@ -32,14 +32,14 @@ function AudioRecorder() {
     if(recordedAudio)
     {
         AWS.config.update({
-            region: 'us-east-2',
-            accessKeyId: 'AKIAXZXYHKGJYMD6ZPRN',
-            secretAccessKey: 'UW0yBBDCtMi5w9Irl+mhxbcSjkLz18ptmqawlvTd',
+            region: '<your_region>',
+            accessKeyId: '<aws_access_key_id>',
+            secretAccessKey: '<aws_secret_access_key>',
           });
 
           const s3 = new AWS.S3();
           const params = {
-            Bucket: 'my-bucket-for-ml-functions',
+            Bucket: '<your_bucket_name>',
             Key: 'recorded_audio.wav', // Set the desired file name
             Body: recordedAudio,
             // ACL: 'public-read', // You can adjust the permissions as needed

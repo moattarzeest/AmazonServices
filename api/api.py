@@ -7,6 +7,7 @@ import time
 import urllib.request
 import json
 import boto3
+
 x = datetime.datetime.now()
 import uuid
 # Initializing flask app
@@ -15,20 +16,21 @@ app = Flask(__name__)
 # -----------------------------Transcription---------------------------- #
 
 transcribe = boto3.client('transcribe',
-aws_access_key_id = 'AKIAXZXYHKGJYMD6ZPRN',
-aws_secret_access_key = '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',
-region_name = 'us-east-2')
+aws_access_key_id = '<aws_access_key_id>',
+aws_secret_access_key = '<aws_secret_access_key>',
+region_name = '<your_region>')
 
 @app.route('/data')
 
 
 
 def detect_PII():
+    
 
 
     # -----------------------------Transcription---------------------------- #
     audio_file_name = 'recorded_audio.wav'
-    job_uri = 's3://my-bucket-for-ml-functions/recorded_audio.wav'
+    job_uri = 's3://<your_bucket_name>/recorded_audio.wav'
    
  
 
@@ -53,7 +55,10 @@ def detect_PII():
  
     # -----------------------------Comprehend and Polly---------------------------- #
     # Initialize the Comprehend client
-    comprehend = boto3.client('comprehend', region_name='us-east-2')  # Replace 'us-east-1' with your desired AWS region
+    comprehend = boto3.client('comprehend',
+   aws_access_key_id = '<aws_access_key_id>',
+   aws_secret_access_key = '<aws_secret_access_key>',
+   region_name = '<your_region>')  # Replace 'us-east-1' with your desired AWS region
 
     # Text to analyze
     text_to_analyze = transcript
@@ -75,7 +80,10 @@ def detect_PII():
 
         print("Redacted Text=====", redacted_text)
 
-    polly = boto3.client('polly',region_name='us-east-2')
+    polly = boto3.client('polly',
+   aws_access_key_id = '<aws_access_key_id>',
+   aws_secret_access_key = '<aws_secret_access_key>',
+   region_name = '<your_region>')
 
     voice_id = 'Joanna'
     language_code = 'en-US'

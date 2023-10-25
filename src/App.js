@@ -13,15 +13,11 @@ function App() {
 
 		fetch("/data").then((res) =>
 			res.json().then((data) => {
-
 				setdata(
         
         {
           redactedText: data.body
         }
-        // {
-        //   transcriptedText: data.text
-        // }
 			
 				);
 			})

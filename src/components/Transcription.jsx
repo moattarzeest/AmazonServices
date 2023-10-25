@@ -3,9 +3,9 @@ import { TranscribeService } from 'aws-sdk';
 
 // Configure AWS with your credentials
 AWS.config.update({
-  accessKeyId: 'AKIAXZXYHKGJYMD6ZPRN',
-  secretAccessKey: 'UW0yBBDCtMi5w9Irl+mhxbcSjkLz18ptmqawlvTd',
-  region: 'us-east-2',
+  accessKeyId: '<aws_access_key_id>',
+  secretAccessKey: '<aws_secret_access_key>',
+  region: '<your_region>',
 });
 const transcribeService = new TranscribeService();
 
@@ -17,7 +17,7 @@ export const transcribeAudio = (jobName, languageCode, mediaFormat, s3Bucket, s3
     },
     MediaFormat: mediaFormat, // e.g., 'wav' or 'mp3'
     TranscriptionJobName: jobName,
-    OutputBucketName: 'my-bucket-for-ml-functions', // The bucket where the transcription results will be stored
+    OutputBucketName: '<your_bucket_name>', // The bucket where the transcription results will be stored
   };
 
   transcribeService.startTranscriptionJob(params, (err, data) => {
